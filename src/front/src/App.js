@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Ta gueule !
+          Je t'en supplie ferme ta gueule.
         </a>
       </header>
     </div>
