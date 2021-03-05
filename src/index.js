@@ -4,10 +4,11 @@ import './index.css';
 import App from './front/src/App';
 import reportWebVitals from './front/src/reportWebVitals';
 import Register from './front/src/register/register'
+import Signin from './front/src/signin/signin'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Register />
+    <Signin />
   </React.StrictMode>,
   document.getElementById('root')
 );
