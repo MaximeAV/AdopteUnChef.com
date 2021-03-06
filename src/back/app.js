@@ -14,7 +14,7 @@ app.use(function (req, res, next) {
 });
 
 var databaseRouter = require('./routes/databaseRouter');
-var port = 3000;
+var port = 4000;
 
 app.use('/api/db', databaseRouter); 
 

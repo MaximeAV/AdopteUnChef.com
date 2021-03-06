@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './front/src/App';
 import reportWebVitals from './front/src/reportWebVitals';
+<<<<<<< HEAD:src/index.js
+=======
+import Register from './front/src/register/register'
+import Signin from './front/src/signin/signin'
+>>>>>>> register:src/front/src/index.js
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Signin />
   </React.StrictMode>,
   document.getElementById('root')
 );
