@@ -52,24 +52,6 @@ form {
     margin-top: 5px;
   }
 
-  .navlink {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-    width: 100%;
-    padding: 10px 10px;
-    border-radius: 5px;
-    border: 1px solid #d6d1d5;
-    margin-top: 5px;
-    flex-wrap: wrap;
-    align-items: center;
-    text-align: center;
-    text-decoration: none;
-    background-color: green;
-    color: white;
-  }
-  
-
   .submit {
     width: 100%;
     display: flex;

@@ -1,5 +1,6 @@
 import React from 'react';
 import './signin.css';
+import '../index.css';
 import '../register/register'
 import Register from '../register/register';
 import {BrowserRouter as Router, NavLink, Route} from "react-router-dom";

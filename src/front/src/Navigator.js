@@ -6,7 +6,7 @@ import Register from './register/register'
 const Navigator = () => (
     <BrowserRouter>
         <Switch>
-		    <Route exact path="/signin">
+		    <Route exact path="/">
 			    <Signin />
 		    </Route>
 		    <Route exact path="/register">
