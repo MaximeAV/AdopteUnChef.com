@@ -1,5 +1,10 @@
 import React from 'react';
 import './signin.css';
+import '../index.css';
+import '../register/register'
+import Register from '../register/register';
+import {BrowserRouter as Router, NavLink, Route} from "react-router-dom";
+
 
 class Signin extends React.Component {
     state = {
@@ -19,13 +24,12 @@ class Signin extends React.Component {
                     Mot de passe : 
                     <input type="password" name="password" value={this.state.password} onChange={e => this.setState({password: e.target.value})}/>
                 </label>
-                <input type="submit" value="Se connecter" className="submit"/>
+                <NavLink className="submit" to="/" className="navlink">Se connecter</NavLink>
                 <label>Pas encore inscrit ?</label>
-                <input type="submit" value="S'inscrire" className="submit" />
+                <NavLink className="submit" to="/register" className="navlink">S'inscrire</NavLink>
             </form>
         )
     }
-
 }
 
 export default Signin;

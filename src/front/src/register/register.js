@@ -1,11 +1,11 @@
 import React from 'react';
 import './register.css';
-
+import '../index.css'
 class Register extends React.Component {
     state = {
-        username : "",
-        email : "",
-        password : ""
+        username : null,
+        email : null,
+        password : null
     }
 
     render(){
@@ -24,7 +24,7 @@ class Register extends React.Component {
                     Mot de passe : 
                     <input type="password" name="password" value={this.state.password} onChange={e => this.setState({password: e.target.value})}/>
                 </label>
-                <input type="submit" value="S'inscrire" className="submit"/>
+                <input type="submit" value="S'inscrire" className="navlink"/>
             </form>
         )
     }
