@@ -1,32 +1,81 @@
 import React from 'react';
 import './register.css';
 import '../index.css'
+import 'whatwg-fetch'
+
 class Register extends React.Component {
-    state = {
-        username : null,
-        email : null,
-        password : null
+    constructor(props){
+        super();
+        console.log(this.props)
+        this.handleSubmit = this.handleSubmit.bind(this)
+
+        this.state = {
+            username: '',
+            email: '',
+            password: '',
+        }
     }
 
     render(){
         return(
-            <form className="form">
+            <form className="form" onSubmit={this.handleSubmit}>
                 <h1 className="titre">Créer un compte</h1>
                 <label>
                     Nom d'utilisateur : 
-                    <input type="text" name="userName" value={this.state.username} onChange={e => this.setState({username: e.target.value})}/>
+                    <input type="text" name="username" value={this.state.username || ""} onChange={e => this.setState({username: e.target.value})} required/>
                 </label>
                 <label>
                     Email : 
-                    <input type="email" name="email" value={this.state.email} onChange={e => this.setState({email: e.target.value})}/>
+                    <input type="email" name="email" value={this.state.email || ""} onChange={e => this.setState({email: e.target.value})} required/>
                 </label>
                 <label>
                     Mot de passe : 
-                    <input type="password" name="password" value={this.state.password} onChange={e => this.setState({password: e.target.value})}/>
+                    <input type="password" name="password" value={this.state.password || ""} onChange={e => this.setState({password: e.target.value})} required/>
                 </label>
                 <input type="submit" value="S'inscrire" className="navlink"/>
             </form>
         )
+    }
+   
+    handleSubmit(event){
+        event.preventDefault();
+        console.log('Register user...')
+        
+        // POST request using fetch with error handling
+        let headers = new Headers();
+
+        headers.append('Content-Type', 'application/json');
+        headers.append('Accept', 'application/json');
+        headers.append('Authorization', 'Basic ');
+        headers.append('Origin','http://localhost:3000');
+
+        let userJson = {
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password
+        }
+        
+        const requestOptions = {
+            method: 'POST',
+            mode: 'cors',
+            credentials: 'include',
+            headers: headers,
+            body: JSON.stringify(userJson)
+        };
+        fetch('http://localhost:4000/api/db/users/register', requestOptions)
+            .then(async res => {
+                const data = await res.json();
+                // check for error response
+                if (!res.ok) {
+                    // get error message from body or default to response status
+                    const error = (data && data.message) || res.status;
+                    return Promise.reject(error);
+                }
+            })
+            .catch(error => {
+                this.setState({ errorMessage: error.toString() });
+                console.error('There was an error!', error);
+            });
     }
 }
 
