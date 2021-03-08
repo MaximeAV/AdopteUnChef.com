@@ -1,0 +1,26 @@
+.publication {
+    max-width: 500px;
+    background-color: white;
+    border: 1px solid lightgray;
+    margin-bottom: 45px;
+}
+
+.publication__image {
+    width: 100%;
+    object-fit: contain;
+}
+
+.publication__description {
+    font-weight: normal;
+    padding: 20px;
+}
+
+.publication__header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.publication__avatar {
+    margin-right: 10px;
+}

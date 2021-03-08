@@ -8,7 +8,7 @@ import Navigator from './Navigator'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Navigator />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
