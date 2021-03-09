@@ -48,11 +48,10 @@ class Signin extends React.Component {
         headers.append('Authorization', 'Basic ');
         headers.append('Origin','http://localhost:3000');
 
-/*         let userJson = {
-             username: this.state.username,
-            password: this.state.password 
-            
-        } */
+         let userJson = {
+            username: this.state.username,
+            password: this.state.password           
+        }
         
         const requestOptions = {
             method: 'POST',

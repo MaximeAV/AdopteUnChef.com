@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import { React, useState} from 'react';
 import './App.css';
+import Publication from './publication/Publication'
 
 function App() {
+  const [publications, setPublications] = useState([
+    {
+      username: "Yoann",
+      description: "Ceci est une salade",
+      image: "https://images.unsplash.com/photo-1564345440082-155c43c5532f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"
+    },
+    {
+      username: "Paul",
+      description: "Ceci est un burger",
+      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=902&q=80"
+    }
+  ])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Eh Paul ?
-        </p>
-        <a
-          className="App-link"
-          href="https://www.dailymotion.com/video/x67m4h"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Je t'en supplie ferme ta gueule.
-        </a>
-      </header>
+    <div className="app">
+        <div className="app__header">
+          <h1>AdopteUnChef.com</h1>
+        </div>
+
+        {
+          publications.map(publication =>(
+            <Publication username={publication.username} description={publication.description} image={publication.image}/>
+          ))
+        }
+        
     </div>
   );
 }

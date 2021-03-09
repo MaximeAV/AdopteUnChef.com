@@ -1,18 +1,7 @@
 * {
     box-sizing: border-box;
   }
-
-  body {
-    font-family: Lato;
-    height: 97vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-form {
+.signin__form {
     display: flex;
     flex-direction: column;
     width: 400px;
@@ -22,6 +11,12 @@ form {
     border-radius: 6px;
     box-shadow: 0px 8px 36px #222;
     background-color: #fefefe;
+    font-family: Lato;
+    height: 97vh;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
   }
 
   form > h1 {
@@ -41,7 +36,7 @@ form {
     font-weight: lighter;
   }
   
-  input {
+  .signin__input {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
@@ -58,4 +53,21 @@ form {
     flex-wrap: wrap;
     align-items: center;
     text-align: center;
+  }
+
+  .navlink {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: 1px solid #d6d1d5;
+    margin-top: 5px;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    background-color: green;
+    color: white;
   }
