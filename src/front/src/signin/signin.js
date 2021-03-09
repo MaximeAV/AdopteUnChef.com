@@ -48,17 +48,18 @@ class Signin extends React.Component {
         headers.append('Authorization', 'Basic ');
         headers.append('Origin','http://localhost:3000');
 
-        let userJson = {
-            username: this.state.username,
-            password: this.state.password
-        }
+/*         let userJson = {
+             username: this.state.username,
+            password: this.state.password 
+            
+        } */
         
         const requestOptions = {
             method: 'POST',
             mode: 'cors',
             credentials: 'include',
             headers: headers,
-            body: JSON.stringify(userJson)
+            body: JSON.stringify(this.state)
         };
         fetch('http://localhost:4000/api/db/users/signin', requestOptions)
             .then(async res => {

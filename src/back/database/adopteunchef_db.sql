@@ -16,47 +16,45 @@
 CREATE DATABASE IF NOT EXISTS `adopteunchef_db` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `adopteunchef_db`;
 
--- Listage de la structure de la table adopteunchef_db. aliments
-CREATE TABLE IF NOT EXISTS `aliments` (
+-- Listage de la structure de la table adopteunchef_db. roles
+CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` char(50) DEFAULT NULL,
-  `id_foods` char(50) DEFAULT NULL,
+  `role` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_foods` (`id_foods`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `role` (`role`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table adopteunchef_db.aliments : ~0 rows (environ)
-DELETE FROM `aliments`;
-/*!40000 ALTER TABLE `aliments` DISABLE KEYS */;
-/*!40000 ALTER TABLE `aliments` ENABLE KEYS */;
+-- Listage des données de la table adopteunchef_db.roles : ~3 rows (environ)
+DELETE FROM `roles`;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` (`id`, `role`) VALUES
+	(1, 'administrator'),
+	(3, 'moderator'),
+	(2, 'user');
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
--- Listage de la structure de la table adopteunchef_db. a_users_food
-CREATE TABLE IF NOT EXISTS `a_users_food` (
-  `id_users` int(11) DEFAULT NULL,
-  `id_foods` int(11) DEFAULT NULL,
-  KEY `id_users` (`id_users`),
-  KEY `id_foods` (`id_foods`),
-  CONSTRAINT `FK1_id_users` FOREIGN KEY (`id_users`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK2_id_foods` FOREIGN KEY (`id_foods`) REFERENCES `foods` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Listage des données de la table adopteunchef_db.a_users_food : ~0 rows (environ)
-DELETE FROM `a_users_food`;
-/*!40000 ALTER TABLE `a_users_food` DISABLE KEYS */;
-/*!40000 ALTER TABLE `a_users_food` ENABLE KEYS */;
-
--- Listage de la structure de la table adopteunchef_db. foods
-CREATE TABLE IF NOT EXISTS `foods` (
+-- Listage de la structure de la table adopteunchef_db. tags
+CREATE TABLE IF NOT EXISTS `tags` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` char(50) DEFAULT NULL,
-  `country` char(50) DEFAULT NULL,
+  `tag` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table adopteunchef_db.foods : ~0 rows (environ)
-DELETE FROM `foods`;
-/*!40000 ALTER TABLE `foods` DISABLE KEYS */;
-/*!40000 ALTER TABLE `foods` ENABLE KEYS */;
+-- Listage des données de la table adopteunchef_db.tags : ~0 rows (environ)
+DELETE FROM `tags`;
+/*!40000 ALTER TABLE `tags` DISABLE KEYS */;
+INSERT INTO `tags` (`id`, `tag`) VALUES
+	(1, 'Africain'),
+	(2, 'Américain'),
+	(3, 'Asiatique'),
+	(4, 'Espagnol'),
+	(5, 'Français'),
+	(6, 'Healthy'),
+	(7, 'Italien'),
+	(8, 'JunkFood'),
+	(9, 'Sans gluten'),
+	(10, 'Végétarien');
+/*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 
 -- Listage de la structure de la table adopteunchef_db. users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -64,14 +62,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(250) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `role` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `role` (`role`),
+  CONSTRAINT `FK1_roles` FOREIGN KEY (`role`) REFERENCES `roles` (`role`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table adopteunchef_db.users : ~1 rows (environ)
+-- Listage des données de la table adopteunchef_db.users : ~2 rows (environ)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
-	(1, 'Paul', 'paul@laposte.net', '$2a$10$FcrvbL.YqtZb4AOGcBzl2O5oTFgXqA4QtDJ/DMI48LmvFx3sKcP6y');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`) VALUES
+	(1, 'Paul', 'paul@laposte.net', '$2a$10$FcrvbL.YqtZb4AOGcBzl2O5oTFgXqA4QtDJ/DMI48LmvFx3sKcP6y', NULL),
+	(2, 'Yoann', 'yoann@laposte.net', '$2a$10$eo9LxINkPgMTW6MjbcD7HubHMa3Ih.biaTASRgINeMS8.WewNXGL6', NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

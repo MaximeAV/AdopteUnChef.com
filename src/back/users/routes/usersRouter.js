@@ -4,7 +4,7 @@ var signin = require('../components/signin');
 var getUsers = require('../components/getUsers');
 var router = express.Router();
 
-/* GET account. */
+/* GET users. */
 router.get('/', async function (req, res, next) {
   res.send(await getUsers.getUsers(req.body));
 });
