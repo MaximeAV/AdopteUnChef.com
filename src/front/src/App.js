@@ -1,6 +1,7 @@
 import { React, useState} from 'react';
 import './App.css';
-import Publication from './publication/Publication'
+import Publication from './publication/Publication';
+import ImageUpload from './ImageUpload';
 
 function App() {
   const [publications, setPublications] = useState([
@@ -13,11 +14,19 @@ function App() {
       username: "Paul",
       description: "Ceci est un burger",
       image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=902&q=80"
+    },
+    {
+      username: "Maxime",
+      description: "Ceci est une pastabox",
+      image:"",
     }
   ])
 
   return (
     <div className="app">
+
+        <ImageUpload />
+
         <div className="app__header">
           <h1>AdopteUnChef.com</h1>
         </div>
