@@ -18,19 +18,19 @@ class Register extends React.Component {
 
     render(){
         return(
-            <form className="form" onSubmit={this.handleSubmit}>
+            <form className="register__form" onSubmit={this.handleSubmit}>
                 <h1 className="titre">Créer un compte</h1>
                 <label>
                     Nom d'utilisateur : 
-                    <input type="text" name="username" value={this.state.username || ""} onChange={e => this.setState({username: e.target.value})} required/>
+                    <input className="register__input" type="text" name="username" value={this.state.username || ""} onChange={e => this.setState({username: e.target.value})} required/>
                 </label>
                 <label>
                     Email : 
-                    <input type="email" name="email" value={this.state.email || ""} onChange={e => this.setState({email: e.target.value})} required/>
+                    <input className="register__input" type="email" name="email" value={this.state.email || ""} onChange={e => this.setState({email: e.target.value})} required/>
                 </label>
                 <label>
                     Mot de passe : 
-                    <input type="password" name="password" value={this.state.password || ""} onChange={e => this.setState({password: e.target.value})} required/>
+                    <input className="register__input" type="password" name="password" value={this.state.password || ""} onChange={e => this.setState({password: e.target.value})} required/>
                 </label>
                 <input type="submit" value="S'inscrire" className="navlink"/>
             </form>
