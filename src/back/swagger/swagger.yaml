@@ -83,6 +83,46 @@ paths:
             $ref: '#/definitions/Tags'
         '400':
           description: 'Invalid status value'
+  
+  /api/db/tags/addTag:
+    post:
+      summary: Add tag to db.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: name
+          description: The tag to insert.
+          schema:
+            type: object
+            required:
+              - tag
+            properties:
+              tag:
+                type: string
+      responses:
+        200:
+          description: Tag inserted
+
+  /api/db/tags/delete:
+    post:
+      summary: Delete tag from db.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: name
+          description: The tag to delete.
+          schema:
+            type: object
+            required:
+              - tag
+            properties:
+              tag:
+                type: string
+      responses:
+        200:
+          description: Tag deleted
 
 definitions:
   User:
