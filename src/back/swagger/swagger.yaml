@@ -1,0 +1,108 @@
+swagger: '2.0'
+info:
+  description: "This is the swagger file which describe every transactions between BACK-END and FRONT-END.\nThis aims to describes in depth objects that are used in AdopteUnChef application"
+  version: '1.0.0'
+  title: 'Swagger AdopteUnChef'
+host: 'localhost:4000'
+
+paths:
+  /:
+    get:
+      description: Use it to see home page !
+      responses:
+        '200':
+          description: a single string is returned
+
+  /api/db/users/:
+    get:
+      description: Use to get all users from BDD
+      responses:
+        '200':
+          description: a json is returned
+          schema:
+            $ref: '#/definitions/User'
+        '400':
+          description: 'Invalid status value'
+  
+  /api/db/users/register:
+    post:
+      summary: Creates a new user.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: name
+          description: The user to create.
+          schema:
+            type: object
+            required:
+              - username
+              - email
+              - password
+            properties:
+              username:
+                type: string
+              email:
+                type: string
+              password:
+                type: string
+      responses:
+        201:
+          description: Accuont was created successfully
+  
+  /api/db/users/signin:
+    post:
+      summary: Connect to user.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: name
+          description: The user to connect.
+          schema:
+            type: object
+            required:
+              - username
+              - password
+            properties:
+              username:
+                type: string
+              password:
+                type: string
+      responses:
+        200:
+          description: Account connected
+  
+  /api/db/tags/:
+    get:
+      description: Use to get list of tags from BDD
+      responses:
+        '200':
+          description: a json is returned
+          schema:
+            $ref: '#/definitions/Tags'
+        '400':
+          description: 'Invalid status value'
+
+definitions:
+  User:
+    type: object
+    properties:
+      username:
+        type: string
+        example: Didier
+      email:
+        type: string
+        example: 'Didier@laposte.net'
+      password:
+        type: string
+        example: 'azerty123'
+  Tags:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+      tag:
+        type: string
+        example: 'Africain'
