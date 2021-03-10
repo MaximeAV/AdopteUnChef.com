@@ -16,6 +16,36 @@
 CREATE DATABASE IF NOT EXISTS `adopteunchef_db` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `adopteunchef_db`;
 
+-- Listage de la structure de la table adopteunchef_db. as_image_comments
+CREATE TABLE IF NOT EXISTS `as_image_comments` (
+  `id_image` int(11) DEFAULT NULL,
+  `id_comments` int(11) DEFAULT NULL,
+  KEY `id_image` (`id_image`),
+  KEY `id_comments` (`id_comments`),
+  CONSTRAINT `FK1_id_image` FOREIGN KEY (`id_image`) REFERENCES `images` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK2_id_comments` FOREIGN KEY (`id_comments`) REFERENCES `comments` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Listage des données de la table adopteunchef_db.as_image_comments : ~0 rows (environ)
+DELETE FROM `as_image_comments`;
+/*!40000 ALTER TABLE `as_image_comments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `as_image_comments` ENABLE KEYS */;
+
+-- Listage de la structure de la table adopteunchef_db. as_publi_image
+CREATE TABLE IF NOT EXISTS `as_publi_image` (
+  `id_publication` int(11) DEFAULT NULL,
+  `id_images` int(11) DEFAULT NULL,
+  KEY `id_publication` (`id_publication`),
+  KEY `id_images` (`id_images`),
+  CONSTRAINT `FK1_id_publi` FOREIGN KEY (`id_publication`) REFERENCES `publications` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK2_id_images` FOREIGN KEY (`id_images`) REFERENCES `images` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Listage des données de la table adopteunchef_db.as_publi_image : ~0 rows (environ)
+DELETE FROM `as_publi_image`;
+/*!40000 ALTER TABLE `as_publi_image` DISABLE KEYS */;
+/*!40000 ALTER TABLE `as_publi_image` ENABLE KEYS */;
+
 -- Listage de la structure de la table adopteunchef_db. as_users_tags
 CREATE TABLE IF NOT EXISTS `as_users_tags` (
   `id_user` int(11) DEFAULT NULL,
@@ -52,7 +82,8 @@ DELETE FROM `comments`;
 -- Listage de la structure de la table adopteunchef_db. images
 CREATE TABLE IF NOT EXISTS `images` (
   `id` int(11) NOT NULL,
-  `title` varchar(50) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
   `path` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -72,7 +103,8 @@ CREATE TABLE IF NOT EXISTS `publications` (
   `likes` int(11) DEFAULT '0',
   `dislikes` int(11) DEFAULT '0',
   `comments` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `image` (`image`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table adopteunchef_db.publications : ~0 rows (environ)
