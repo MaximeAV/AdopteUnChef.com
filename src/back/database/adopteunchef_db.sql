@@ -16,6 +16,70 @@
 CREATE DATABASE IF NOT EXISTS `adopteunchef_db` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `adopteunchef_db`;
 
+-- Listage de la structure de la table adopteunchef_db. as_users_tags
+CREATE TABLE IF NOT EXISTS `as_users_tags` (
+  `id_user` int(11) DEFAULT NULL,
+  `id_tags` int(11) DEFAULT NULL,
+  KEY `id_user` (`id_user`),
+  KEY `id_tags` (`id_tags`),
+  CONSTRAINT `FK1_id_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK2_id_tags` FOREIGN KEY (`id_tags`) REFERENCES `tags` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Listage des données de la table adopteunchef_db.as_users_tags : ~0 rows (environ)
+DELETE FROM `as_users_tags`;
+/*!40000 ALTER TABLE `as_users_tags` DISABLE KEYS */;
+INSERT INTO `as_users_tags` (`id_user`, `id_tags`) VALUES
+	(2, 11);
+/*!40000 ALTER TABLE `as_users_tags` ENABLE KEYS */;
+
+-- Listage de la structure de la table adopteunchef_db. comments
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` int(11) NOT NULL,
+  `author` varchar(50) NOT NULL DEFAULT '',
+  `date` datetime NOT NULL,
+  `comment` varchar(255) NOT NULL DEFAULT '',
+  `likes` int(11) NOT NULL DEFAULT '0',
+  `dislikes` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Listage des données de la table adopteunchef_db.comments : ~0 rows (environ)
+DELETE FROM `comments`;
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+
+-- Listage de la structure de la table adopteunchef_db. images
+CREATE TABLE IF NOT EXISTS `images` (
+  `id` int(11) NOT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `path` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Listage des données de la table adopteunchef_db.images : ~0 rows (environ)
+DELETE FROM `images`;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
+
+-- Listage de la structure de la table adopteunchef_db. publications
+CREATE TABLE IF NOT EXISTS `publications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `date` datetime NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `image` varchar(50) NOT NULL,
+  `likes` int(11) DEFAULT '0',
+  `dislikes` int(11) DEFAULT '0',
+  `comments` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Listage des données de la table adopteunchef_db.publications : ~0 rows (environ)
+DELETE FROM `publications`;
+/*!40000 ALTER TABLE `publications` DISABLE KEYS */;
+/*!40000 ALTER TABLE `publications` ENABLE KEYS */;
+
 -- Listage de la structure de la table adopteunchef_db. roles
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -38,9 +102,9 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tag` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table adopteunchef_db.tags : ~0 rows (environ)
+-- Listage des données de la table adopteunchef_db.tags : ~11 rows (environ)
 DELETE FROM `tags`;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
 INSERT INTO `tags` (`id`, `tag`) VALUES
@@ -53,7 +117,8 @@ INSERT INTO `tags` (`id`, `tag`) VALUES
 	(7, 'Italien'),
 	(8, 'JunkFood'),
 	(9, 'Sans gluten'),
-	(10, 'Végétarien');
+	(10, 'Végétarien'),
+	(11, 'Cuisine du monde');
 /*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 
 -- Listage de la structure de la table adopteunchef_db. users
@@ -66,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   KEY `role` (`role`),
   CONSTRAINT `FK1_roles` FOREIGN KEY (`role`) REFERENCES `roles` (`role`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table adopteunchef_db.users : ~2 rows (environ)
 DELETE FROM `users`;
