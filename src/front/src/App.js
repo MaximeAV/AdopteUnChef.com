@@ -2,6 +2,8 @@ import { React, useState} from 'react';
 import './App.css';
 import Publication from './publication/Publication';
 import ImageUpload from './ImageUpload';
+import './ImageUpload.css';
+
 
 function App() {
   const [publications, setPublications] = useState([

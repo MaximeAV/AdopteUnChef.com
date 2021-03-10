@@ -1,41 +1,62 @@
+import { ReactComponent } from 'react';
 import { Button } from '@material-ui/core'
-import React, { useState } from 'react'
+import React from 'react'
+import './ImageUpload.css';
+import axios from 'axios';
 
-function ImageUpload() {
-    const [image, setImage] = useState(null);
-    const [progress, setProgressn] = useState(0);
-    const [caption, setCaption] = useState('');
+class ImageUpload extends React.Component {
 
-    const handleChange = (e) => {
-        if(e.target.files[0]){
-            setImage(e.target.files[0]);
+    state = {
+        title:'',
+        recette:'',
+        selectedFile:null,
+    }
+    constructor(props){
+        super(props);
+        this.state = {
+            title:'',
+            recette:'',
         }
-    };
-    
-    const handleUpload = () => {
-       /* const uploadTask = storage.ref(`image/${image.name}`).put(image);
-        uploadTask.on(
-            "state_changed",
-            (snapshot) => {
-                // progress function
-            }
-        )*/
+        this.handleUpload= this.handleUpload.bind(this)
     }
 
-    return (
-        <div>
-            {/* I want to have a  */}
-            {/* caption input  */}
-            {/* file picker  */}
-            {/* post button  */}
+    handleUpload(event){
+        event.preventDefault();
+        console.log('onUpload : ',this.state);
+        this.fileUploadHandler();
+    }
 
-            <input type="text" placeholder='Enter a caption' onChange={event => setCaption(event.target.value )} value ={caption}/>
-            <input type="file" onChange={handleChange} />
-            <Button onClick={handleUpload}>
-                Upload
-            </Button>
-        </div>
-    )
+    fileSelectHandler = event => {
+        console.log(event.target.files[0]);
+        this.setState({
+            selectedFile: event.target.files[0]
+        })
+    }
+
+    fileUploadHandler = () => {
+        const fd = new FormData();
+        fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
+        axios.post('./Images', fd)
+            .then( res => {
+                console.log(res);
+            });
+    }
+
+    render(){
+        return (
+            <div className="imageupload">
+                <input type="text" placeholder='Title' onChange={(e) => this.setState({title: e.target.value} )} />
+                <textarea placeholder='Recette' rows="10" onChange={(e) => this.setState({recette: e.target.value} )}/>
+                <input type="file" onChange={this.fileSelectHandler} />
+                <Button onClick={(e) => this.handleUpload(e)}>
+                    Upload
+                </Button>
+                <Button onClick={this.fileUploadHandler} >
+                    test euplod de la video
+                </Button>
+            </div>
+        )
+    }
 }
 
 export default ImageUpload;
