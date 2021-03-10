@@ -48,7 +48,7 @@ paths:
                 type: string
       responses:
         201:
-          description: Accuont was created successfully
+          description: User was created successfully
   
   /api/db/users/signin:
     post:
@@ -124,6 +124,72 @@ paths:
         200:
           description: Tag deleted
 
+  /api/db/tags/addUserTags:
+    post:
+      summary: Add tag to user.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: name
+          description: The tags to insert.
+          schema:
+            type: object
+            required:
+              - id_user
+              - tags
+            properties:
+              id_user:
+                type: integer
+              tags:
+                type: string
+      responses:
+        200:
+          description: Tag inserted for user
+
+  /api/db/tags/deleteUserTags:
+    post:
+      summary: Delete tag to user.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: name
+          description: The tags to delete.
+          schema:
+            type: object
+            required:
+              - id_user
+              - id_tags
+            properties:
+              id_user:
+                type: integer
+              id_tags:
+                type: integer
+      responses:
+        200:
+          description: Tag deleted for user
+
+  /api/db/tags/users:
+    post:
+      summary: Get tags from user.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: name
+          description: The user to get tags.
+          schema:
+            type: object
+            required:
+              - id_user
+            properties:
+              id_user:
+                type: integer
+      responses:
+        200:
+          description: Done
+
 definitions:
   User:
     type: object
@@ -145,4 +211,4 @@ definitions:
         example: 1
       tag:
         type: string
-        example: 'Africain'
+        example: ["Africain", "Français"]

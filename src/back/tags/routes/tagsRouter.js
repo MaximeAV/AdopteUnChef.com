@@ -9,13 +9,21 @@ var router = express.Router();
 
 /* GET tags. */
 router.get('/', async function (req, res, next) {
-  res.send(await getTags.getTags(req.body));
+  try{
+    res.send(await getTags.getTags(req.body))
+  }catch (err) {
+  next(err);
+}
 });
 
 /* GET users tags. */
 router.post('/users', async function (req, res, next) {
-  res.send(await getUserTags.getUserTags(req.body));
-});
+    try{
+      res.send(await getUserTags.getUserTags(req.body))
+    }catch (err) {
+    next(err);
+  }
+  });
 
 /* POST add tag. */
 router.post('/addTag', async function (req, res, next) {
@@ -28,17 +36,29 @@ router.post('/addTag', async function (req, res, next) {
 
 /* POST add user tags. */
 router.post('/addUserTags', async function (req, res, next) {
-  res.send(await addUserTags.addUserTags(req.body));
+  try{
+    res.send(await addUserTags.addUserTags(req.body))
+  }catch (err) {
+  next(err);
+}
 });
 
 /* POST delete tags. */
 router.post('/delete', async function (req, res, next) {
-  res.send(await deleteTags.getDelete(req.body));
+  try{
+    res.send(await deleteTags.deleteTags(req.body))
+  }catch (err) {
+  next(err);
+}
 });
 
 /* POST delete user tags. */
 router.post('/deleteUserTags', async function (req, res, next) {
-  res.send(await deleteUserTags.deleteUserTags(req.body));
+  try{
+    res.send(await deleteUserTags.deleteUserTags(req.body))
+  }catch (err) {
+  next(err);
+}
 });
 
 module.exports = router;

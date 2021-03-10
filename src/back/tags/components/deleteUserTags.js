@@ -2,7 +2,7 @@ var db = require('../../Database/database');
 
 async function deleteUserTags(body) {
   result = {};
-  let user = body.id_profile;
+  let user = body.id_user;
   let tags = body.id_tags;
   var res = await db('as_users_tags')
     .where({ id_user: user, id_tags: tags })
