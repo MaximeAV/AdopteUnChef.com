@@ -18,7 +18,7 @@ async function getRegister(body) {
     await db('users')
     .insert({ username: user, email: mail, password: hash })
     .then((data) => {
-      console.log('user ' + body.username + ' inserted');
+      console.log('user ' + body.username + ' inserted' +'\n' + '...................');
     });
   } catch (err) {
     next(err);

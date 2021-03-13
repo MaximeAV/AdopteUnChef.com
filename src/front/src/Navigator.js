@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Signin from './signin/signin';
 import Register from './register/register'
+import Tags from './tags/tags';
 
 const Navigator = () => (
     <BrowserRouter>
@@ -12,6 +13,9 @@ const Navigator = () => (
 		    <Route exact path="/register">
 			    <Register />
 		    </Route>
+			<Route exact path="/tags">
+				<Tags />
+			</Route>
 	    </Switch>
     </BrowserRouter>
 );

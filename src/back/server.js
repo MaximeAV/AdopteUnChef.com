@@ -2,9 +2,10 @@ var express = require('express');
 var app = express();
 const bodyparser=require('body-parser');
 
-/* const swaggerUi = require('swagger-ui-express');
+const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
-const swaggerDocument = YAML.load('./src/Swagger/swagger.yaml'); */
+const swaggerDocument = YAML.load('./swagger/swagger.yaml'); 
+
 app.use(bodyparser.json());
 
 app.use(function (req, res, next) {
@@ -20,7 +21,7 @@ var port = 4000;
 
 app.use('/api/db', databaseRouter); 
 
-//app.use('/api/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(port, function () {
   console.log('The API is listening on port ' + port);
