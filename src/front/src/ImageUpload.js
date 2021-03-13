@@ -69,7 +69,7 @@ class ImageUpload extends React.Component {
         let uploadJson = {
             title: this.state.title,
             description: this.state.description,
-            image: "test image",
+            image: this.state.selectedFile,
             id_user: 2
         }
         
