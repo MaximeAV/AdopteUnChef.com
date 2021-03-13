@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Signin from './signin/signin';
 import Register from './register/register'
 import Tags from './tags/tags';
+import App from './App';
 
 const Navigator = () => (
     <BrowserRouter>
@@ -15,6 +16,9 @@ const Navigator = () => (
 		    </Route>
 			<Route exact path="/tags">
 				<Tags />
+			</Route>
+			<Route exact path="/home">
+				<App />
 			</Route>
 	    </Switch>
     </BrowserRouter>

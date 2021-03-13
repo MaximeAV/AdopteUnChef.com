@@ -214,15 +214,12 @@ paths:
             type: object
             required:
               - title
-              - date
               - description
               - image
               - id_user
             properties:
               title:
                 type: string
-              date:
-                type: datetime
               description:
                 type: string
               image:
