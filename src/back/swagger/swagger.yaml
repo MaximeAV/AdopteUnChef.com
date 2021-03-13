@@ -189,7 +189,50 @@ paths:
       responses:
         200:
           description: Done
-
+  
+  /api/db/publications/:
+    get:
+      description: Use to get list of publications from BDD
+      responses:
+        '200':
+          description: a json is returned
+          schema:
+            $ref: '#/definitions/Publication'
+        '400':
+          description: 'Invalid status value'
+  
+  /api/db/publications/addPublication:
+    post:
+      summary: Add publication to db.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: name
+          description: The tag to insert.
+          schema:
+            type: object
+            required:
+              - title
+              - date
+              - description
+              - image
+              - id_user
+            properties:
+              title:
+                type: string
+              date:
+                type: datetime
+              description:
+                type: string
+              image:
+                type: string
+              id_user:
+                type: integer
+      responses:
+        200:
+          description: Publication inserted
+  
 definitions:
   User:
     type: object
@@ -212,3 +255,27 @@ definitions:
       tag:
         type: string
         example: ["Africain", "Français"]
+  Publication:
+    type: object
+    properties:
+      title:
+        type: string
+        example: Les vacances de Didier
+      date:
+        type: datetime
+        example: '10/03/2021'
+      description:
+        type: string
+        example: 'Sacré Didier'
+      image:
+        type: string
+        example: 'vacances.jpeg'
+      likes:
+        type: integer
+        example: 666
+      dislikes:
+        type: integer
+        example: 1
+      comments:
+        type: string
+        example: 'Ceci est un commentaire'

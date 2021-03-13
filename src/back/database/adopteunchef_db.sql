@@ -56,11 +56,11 @@ CREATE TABLE IF NOT EXISTS `as_users_tags` (
   CONSTRAINT `FK2_id_tags` FOREIGN KEY (`id_tags`) REFERENCES `tags` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table adopteunchef_db.as_users_tags : ~0 rows (environ)
+-- Listage des données de la table adopteunchef_db.as_users_tags : ~1 rows (environ)
 DELETE FROM `as_users_tags`;
 /*!40000 ALTER TABLE `as_users_tags` DISABLE KEYS */;
 INSERT INTO `as_users_tags` (`id_user`, `id_tags`) VALUES
-	(2, 11);
+	(2, 1);
 /*!40000 ALTER TABLE `as_users_tags` ENABLE KEYS */;
 
 -- Listage de la structure de la table adopteunchef_db. comments
@@ -97,19 +97,24 @@ DELETE FROM `images`;
 CREATE TABLE IF NOT EXISTS `publications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
-  `date` datetime NOT NULL,
   `description` varchar(255) NOT NULL,
   `image` varchar(50) NOT NULL,
   `likes` int(11) DEFAULT '0',
   `dislikes` int(11) DEFAULT '0',
   `comments` varchar(50) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `image` (`image`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `image` (`image`),
+  KEY `comments` (`comments`),
+  KEY `id_user` (`id_user`),
+  CONSTRAINT `FK1_public_users` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table adopteunchef_db.publications : ~0 rows (environ)
 DELETE FROM `publications`;
 /*!40000 ALTER TABLE `publications` DISABLE KEYS */;
+INSERT INTO `publications` (`id`, `title`, `description`, `image`, `likes`, `dislikes`, `comments`, `id_user`) VALUES
+	(1, 'Test image', 'Ceci est la description', 'img.pnj', 0, 0, NULL, 2);
 /*!40000 ALTER TABLE `publications` ENABLE KEYS */;
 
 -- Listage de la structure de la table adopteunchef_db. roles
@@ -134,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tag` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table adopteunchef_db.tags : ~11 rows (environ)
 DELETE FROM `tags`;
@@ -163,14 +168,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   KEY `role` (`role`),
   CONSTRAINT `FK1_roles` FOREIGN KEY (`role`) REFERENCES `roles` (`role`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table adopteunchef_db.users : ~2 rows (environ)
+-- Listage des données de la table adopteunchef_db.users : ~3 rows (environ)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`) VALUES
 	(1, 'Paul', 'paul@laposte.net', '$2a$10$FcrvbL.YqtZb4AOGcBzl2O5oTFgXqA4QtDJ/DMI48LmvFx3sKcP6y', NULL),
-	(2, 'Yoann', 'yoann@laposte.net', '$2a$10$eo9LxINkPgMTW6MjbcD7HubHMa3Ih.biaTASRgINeMS8.WewNXGL6', NULL);
+	(2, 'Yoann', 'yoann@laposte.net', '$2a$10$eo9LxINkPgMTW6MjbcD7HubHMa3Ih.biaTASRgINeMS8.WewNXGL6', NULL),
+	(3, 'Marcel', 'marcel@laposte.net', '$2a$10$78bjT4UFucjogJEdoRHlLuobC5U0ati8lMZNrQ/F6RqI1iSBDH5sK', NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
