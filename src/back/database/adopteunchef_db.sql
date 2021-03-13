@@ -98,23 +98,23 @@ CREATE TABLE IF NOT EXISTS `publications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `image` varchar(50) NOT NULL,
+  `image` longblob,
   `likes` int(11) DEFAULT '0',
   `dislikes` int(11) DEFAULT '0',
   `comments` varchar(50) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `image` (`image`),
   KEY `comments` (`comments`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `FK1_public_users` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table adopteunchef_db.publications : ~0 rows (environ)
+-- Listage des données de la table adopteunchef_db.publications : ~2 rows (environ)
 DELETE FROM `publications`;
 /*!40000 ALTER TABLE `publications` DISABLE KEYS */;
 INSERT INTO `publications` (`id`, `title`, `description`, `image`, `likes`, `dislikes`, `comments`, `id_user`) VALUES
-	(1, 'Test image', 'Ceci est la description', 'img.pnj', 0, 0, NULL, 2);
+	(1, 'Test image', 'Ceci est la description', _binary 0x696D672E706E6A, 0, 0, NULL, 2),
+	(2, 'Nouvelle image', 'Ajout de la description à l\'image', _binary 0x6D6F6E696D6167652E6A706567, 0, 0, NULL, 2);
 /*!40000 ALTER TABLE `publications` ENABLE KEYS */;
 
 -- Listage de la structure de la table adopteunchef_db. roles
