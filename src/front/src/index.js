@@ -9,7 +9,7 @@ import Tags from './tags/tags'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Tags />
+    <Navigator />
   </React.StrictMode>,
   document.getElementById('root')
 );
