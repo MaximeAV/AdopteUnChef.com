@@ -2,7 +2,7 @@ import React from 'react';
 import './Publication.css';
 import Avatar from '@material-ui/core/Avatar'
 
-function Publication({ username, description, image }) {
+function Publication({ title, username, description, image }) {
 
     return (
         <div className="publication">
@@ -15,7 +15,8 @@ function Publication({ username, description, image }) {
                 <h3>{username}</h3>
             </div>
             <img className="publication__image" src={image}/>
-            <h4 className="publication__description"><strong>{username} : </strong>{description}</h4>
+            <h3 className="publication__title">{title}</h3>
+            <p className="publication__description">{description}</p>
         </div>
     )
 }

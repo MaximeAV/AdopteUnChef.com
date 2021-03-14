@@ -1,18 +1,26 @@
 .publication {
     max-width: 500px;
+    min-width: 500px;
+    margin-right: auto;
+    margin-left: auto;
     background-color: white;
-    border: 1px solid lightgray;
-    margin-bottom: 45px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: solid 1px lightgray;
+    border-radius: 5%;
 }
 
 .publication__image {
-    width: 100%;
-    object-fit: contain;
+    width: 90%;
+    align-items: center;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .publication__description {
     font-weight: normal;
     padding: 20px;
+    padding-top: 10px;
 }
 
 .publication__header {
@@ -23,4 +31,8 @@
 
 .publication__avatar {
     margin-right: 10px;
+}
+
+.publication__title {
+    padding: 20px;
 }
