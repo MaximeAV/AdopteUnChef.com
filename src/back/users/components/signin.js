@@ -1,5 +1,6 @@
 var db = require('../../Database/database');
 const bcrypt = require('bcryptjs');
+const { default: App } = require('../../../front/src/App');
 
 async function getSignin(body) {
 

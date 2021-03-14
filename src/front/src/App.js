@@ -2,7 +2,6 @@ import { React, useState} from 'react';
 import './App.css';
 import Publication from './publication/Publication';
 import './ImageUpload.css';
-import ImageUpload from './ImageUpload';
 
 
 function App() {

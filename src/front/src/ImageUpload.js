@@ -3,7 +3,6 @@ import React from 'react'
 import './ImageUpload.css';
 import 'whatwg-fetch'
 import { storage } from "./firebase/firebase";
-import {BrowserRouter as Router, NavLink, Route} from "react-router-dom";
 
 const ImageUpload = () => {
     const [image, setImage] = useState(null);
