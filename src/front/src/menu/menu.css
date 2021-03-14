@@ -7,4 +7,7 @@
 .menu__navlink {
 	text-decoration: none;
 	padding: 50px;
+	color:green;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 20px;
 }

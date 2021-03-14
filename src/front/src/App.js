@@ -62,7 +62,6 @@ function App() {
   return (
     <div className="app">
         <div className="app__header">
-          <h1>AdopteUnChef.com</h1>
         </div>
 
         <button onClick={handlePublications}>Charger publis</button>
