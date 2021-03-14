@@ -73,6 +73,26 @@ paths:
         200:
           description: Account connected
   
+  /api/db/users/delete:
+    post:
+      summary: Delete user from db.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: name
+          description: The user to delete.
+          schema:
+            type: object
+            required:
+              - username
+            properties:
+              username:
+                type: string
+      responses:
+        200:
+          description: Publication deleted
+
   /api/db/tags/:
     get:
       description: Use to get list of tags from BDD
@@ -249,6 +269,26 @@ paths:
       responses:
         200:
           description: Done
+
+  /api/db/publications/delete:
+    post:
+      summary: Delete publications from db.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: name
+          description: The publication to delete.
+          schema:
+            type: object
+            required:
+              - title
+            properties:
+              title:
+                type: string
+      responses:
+        200:
+          description: Publication deleted
 
 definitions:
   User:
