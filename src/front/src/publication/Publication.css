@@ -8,6 +8,8 @@
     margin-bottom: 20px;
     border: solid 1px lightgray;
     border-radius: 5%;
+    font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: lighter;
 }
 
 .publication__image {
@@ -18,15 +20,18 @@
 }
 
 .publication__description {
-    font-weight: normal;
+    font-weight: lighter;
     padding: 20px;
     padding-top: 10px;
+    font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .publication__header {
     display: flex;
     align-items: center;
     padding: 20px;
+    font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: lighter;
 }
 
 .publication__avatar {
@@ -35,4 +40,11 @@
 
 .publication__title {
     padding: 20px;
+    font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: normal;
+}
+
+.publication__username {
+    font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: normal;
 }

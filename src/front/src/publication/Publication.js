@@ -12,7 +12,7 @@ function Publication({ title, username, description, image }) {
                     alt={username}
                     src="/static/images/avatar/1.jpg"
                 />
-                <h3>{username}</h3>
+                <h3 className="publication__username">{username}</h3>
             </div>
             <img className="publication__image" src={image}/>
             <h3 className="publication__title">{title}</h3>
