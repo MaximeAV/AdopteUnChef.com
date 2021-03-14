@@ -230,6 +230,26 @@ paths:
         200:
           description: Publication inserted
   
+  /api/db/publications/users:
+    post:
+      summary: Get publications from user.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: name
+          description: The user to get tags.
+          schema:
+            type: object
+            required:
+              - id_user
+            properties:
+              id_user:
+                type: integer
+      responses:
+        200:
+          description: Done
+
 definitions:
   User:
     type: object

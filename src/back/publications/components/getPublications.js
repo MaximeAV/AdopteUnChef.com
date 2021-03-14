@@ -2,7 +2,7 @@ var db = require('../../Database/database');
 
 async function getPublications(body) {
   var data = await db
-    .select('id', 'title', 'description', 'image', 'likes', 'dislikes', 'comments')
+    .select('id', 'title', 'description', 'image', 'likes', 'dislikes', 'comments', 'id_user')
     .from('publications')
     .then((data) => {
       console.log('Get publications... \n');

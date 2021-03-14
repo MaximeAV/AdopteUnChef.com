@@ -1,5 +1,6 @@
 var express = require('express');
 var getPublications = require('../components/getPublications');
+var getUserPublications = require('../components/getUserPublications');
 var addPublication = require('../components/addPublication');
 var router = express.Router();
 
@@ -10,6 +11,15 @@ router.get('/', async function (req, res, next) {
   }catch (err) {
   next(err);
 }
+
+/* GET users tags. */
+router.post('/users', async function (req, res, next) {
+  try{
+    res.send(await getUserPublications.getUserPublications(req.body))
+  }catch (err) {
+  next(err);
+}
+});
 
 /* POST add publication. */
 router.post('/addPublication', async function (req, res, next) {
