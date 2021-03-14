@@ -1,5 +1,5 @@
 var express = require('express');
-var app = express();
+const app = express();
 const bodyparser=require('body-parser');
 
 const swaggerUi = require('swagger-ui-express');

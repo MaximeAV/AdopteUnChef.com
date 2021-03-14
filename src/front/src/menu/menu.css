@@ -1,32 +1,13 @@
-.appContainer > header .mainMenu {
-	display: flex;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	height: 100%;
-}
-.appContainer > header .mainMenu li {
-	display: flex;
-	overflow: hidden;
-}
-.appContainer > header .mainMenu a {
+.menu__div {
 	display: flex;
 	align-items: center;
-	padding: 0 30px;
-	padding-bottom: 2px;
-	font-size: 18px;
-	font-weight: 200;
+	justify-content: space-around;
+}
+
+.menu__navlink {
 	text-decoration: none;
-	color: black;
-	transition: all .2s ease;
-	border-bottom: 2px #cb0a23 solid;
-	transform: translateY(2px);
-}
-.appContainer > header .mainMenu a.active,
-.appContainer > header .mainMenu a:hover {
-	color: #f82b23bb;
-	transform: translateY(0);
-}
-.appContainer > header .mainMenu a.active {
-	color: #f82b23;
+	padding: 50px;
+	color:green;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 20px;
 }

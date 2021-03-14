@@ -4,20 +4,30 @@ import Signin from './signin/signin';
 import Register from './register/register'
 import Tags from './tags/tags';
 import App from './App';
+import Menu from './menu/menu';
+import ImageUpload from './ImageUpload';
 
 const Navigator = () => (
     <BrowserRouter>
         <Switch>
-		    <Route exact path="/">
+		    <Route exact path="/signin">
+				<Menu />
 			    <Signin />
 		    </Route>
 		    <Route exact path="/register">
+				<Menu />
 			    <Register />
 		    </Route>
 			<Route exact path="/tags">
+				<Menu />
 				<Tags />
 			</Route>
-			<Route exact path="/home">
+			<Route exact path="/imageupload">
+				<Menu />
+				<ImageUpload />
+			</Route>
+			<Route exact path="/">
+				<Menu />
 				<App />
 			</Route>
 	    </Switch>

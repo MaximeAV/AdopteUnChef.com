@@ -6,7 +6,7 @@ async function getPublications(body) {
     .from('publications')
     .then((data) => {
       console.log('Get publications... \n');
-      console.log(data);  
+      //console.log(data);  
       return data;
     });
   return data;
