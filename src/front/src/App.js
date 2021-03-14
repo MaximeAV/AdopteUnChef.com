@@ -1,23 +1,56 @@
-import logo from './logo.svg';
+import { React, useState} from 'react';
 import './App.css';
+import Publication from './publication/Publication';
+import './ImageUpload.css';
+
 
 function App() {
+  const [publications, setPublications] = useState([])
+
+  const handlePublications = (event) => {
+    event.preventDefault();
+    console.log('Get publications from database...')
+    
+    // POST request using fetch with error handling
+    let headers = new Headers();
+
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    headers.append('Authorization', 'Basic ');
+    headers.append('Origin','http://localhost:3000');
+    
+    const requestOptions = {
+        method: 'GET',
+        mode: 'cors',
+        credentials: 'include',
+        headers: headers,
+    };
+    fetch('http://localhost:4000/api/db/publications/', requestOptions)
+        .then(async res => {
+            const data = await res.json();
+            console.log(data);
+            setPublications(data.reverse());
+            // check for error response
+            if (!res.ok) {
+                // get error message from body or default to response status
+                const error = (data && data.message) || res.status;
+                return Promise.reject(error);
+            }
+        })
+        .catch(error => {
+            console.error('There was an error!', error);
+        });
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Eh Paul ?
-        </p>
-        <a
-          className="App-link"
-          href="https://www.dailymotion.com/video/x67m4h"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Je t'en supplie ferme ta gueule.
-        </a>
-      </header>
+    <div className="app">
+        <button className="app__button" onClick={handlePublications}>Charger les publications</button>
+        {
+          publications.map(publication =>(
+            <Publication title={publication.title} username="Username" description={publication.description} image={publication.image}/>
+          ))
+        }
+        
     </div>
   );
 }

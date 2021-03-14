@@ -1,0 +1,51 @@
+.publication {
+    max-width: 500px;
+    min-width: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: solid 1px lightgray;
+    border-radius: 5%;
+    font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: lighter;
+}
+
+.publication__image {
+    width: 90%;
+    align-items: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.publication__description {
+    font-weight: lighter;
+    padding: 20px;
+    padding-top: 10px;
+    font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.publication__header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: lighter;
+}
+
+.publication__avatar {
+    margin-right: 10px;
+}
+
+.publication__title {
+    padding: 20px;
+    font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: normal;
+    color: orange;
+}
+
+.publication__username {
+    font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: normal;
+}

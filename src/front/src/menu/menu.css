@@ -1,0 +1,21 @@
+.menu__div {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	border-bottom: solid 1px lightgray;
+	margin-bottom: 15px;
+}
+
+.menu__navlink {
+	text-decoration: none;
+	padding: 50px;
+	color:green;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 20px;
+}
+
+.menu__h1 {
+	font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+  	font-size: 2em;
+  	font-weight: lighter;
+}
