@@ -3,6 +3,7 @@ import './Publication.css';
 import Avatar from '@material-ui/core/Avatar'
 
 function Publication({ username, description, image }) {
+
     return (
         <div className="publication">
             <div className="publication__header">

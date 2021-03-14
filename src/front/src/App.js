@@ -1,9 +1,8 @@
 import { React, useState} from 'react';
 import './App.css';
 import Publication from './publication/Publication';
-import ImageUpload from './ImageUpload';
 import './ImageUpload.css';
-import ImageUploadTest from './imageuploadTest';
+import ImageUpload from './ImageUpload';
 
 
 function App() {
@@ -63,7 +62,7 @@ function App() {
   return (
     <div className="app">
 
-        <ImageUploadTest />
+        <ImageUpload />
 
         <div className="app__header">
           <h1>AdopteUnChef.com</h1>
