@@ -61,9 +61,6 @@ function App() {
 
   return (
     <div className="app">
-
-        <ImageUpload />
-
         <div className="app__header">
           <h1>AdopteUnChef.com</h1>
         </div>

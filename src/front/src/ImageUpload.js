@@ -4,7 +4,7 @@ import './ImageUpload.css';
 import 'whatwg-fetch'
 import { storage } from "./firebase/firebase";
 
-const ImageUploadTest = () => {
+const ImageUpload = () => {
     const [image, setImage] = useState(null);
     const [url, setUrl] = useState("");
     const [title, setTitle] = useState("");
@@ -104,4 +104,4 @@ const ImageUploadTest = () => {
     );
   };
 
-  export default ImageUploadTest;
+  export default ImageUpload;
