@@ -4,38 +4,43 @@ import React from 'react'
 import './ImageUpload.css';
 import axios from 'axios';
 import 'whatwg-fetch'
+import { storage } from "./firebase/firebase";
 
 class ImageUpload extends React.Component {
 
     state = {
         title:'',
         description:'',
-        selectedFile:null,
+        selectedFile: '',
+        url: '',
     }
     constructor(props){
         super(props);
         this.state = {
             title:'',
             description:'',
+            selectedFile: null,
         }
         this.handleUpload= this.handleUpload.bind(this)
     }
 
-    handleUpload(event){
+    
+
+    /* handleUpload(event){
         event.preventDefault();
         console.log('onUpload : ',this.state);
         this.fileUploadHandler();
-    }
+    } */
 
-    fileSelectHandler = event => {
+    /* fileSelectHandler = event => {
         console.log(event.target.files[0]);
         this.setState({
             selectedFile: event.target.files[0]
         })
-    }
+    } */
 
-    fileUploadHandler = () => {
-        const fd = new FormData();
+    /* fileUploadHandler = () => {
+        const fd = new FormData(); */
         /*fd.append('title', this.state.title);
         fd.append('description', this.state.description);
         fd.append('image', image);
@@ -45,16 +50,16 @@ class ImageUpload extends React.Component {
                 console.log(res);
             });
         */
-       fd.append(
-           "myFile",
+       /* fd.append(
+           "image",
            this.state.selectedFile,
            this.state.selectedFile.name
        );
 
-       axios.post("/api/uploadFile", fd);
-    }
+       axios.post("http://localhost:4000/api/db/publications/addPublication", fd);
+    } */
 
-    handleSubmit(event){
+    /* handleSubmit(event){
         event.preventDefault();
         console.log('Register user...')
         
@@ -69,7 +74,7 @@ class ImageUpload extends React.Component {
         let uploadJson = {
             title: this.state.title,
             description: this.state.description,
-            image: this.state.selectedFile,
+            image: null,
             id_user: 2
         }
         
@@ -80,7 +85,7 @@ class ImageUpload extends React.Component {
             headers: headers,
             body: JSON.stringify(uploadJson)
         };
-        fetch('http://localhost:4000/api/db/publications/addPublication', requestOptions)
+        fetch("http://localhost:4000/api/db/publications/addPublication", requestOptions)
             .then(async res => {
                 const data = await res.json();
                 // check for error response
@@ -93,20 +98,66 @@ class ImageUpload extends React.Component {
             .catch(error => {
                 console.error('There was an error!', error);
             });
-    }
+    } */
+
+    /* imageHandler = (e) =>{
+        const reader = new FileReader();
+        reader.onload = () =>  {
+            if (reader.readyState === 2){
+                this.setState({selectedFile: reader.result})
+            }
+        }
+        this.setState({selectedFile: reader.readAsDataURL(e.target.files[0])})
+        var fs = require('bro-fs');
+        fs.writeFile('test.jpg', reader, function (err) {
+            if (err) return console.log(err);
+            console.log('Ca marche');
+        })
+    } */
+
+    handleChange = e => {
+        let selectedFile;
+        if (e.target.files[0]) {
+            this.setState({
+                selectedFile: e.target.files[0]
+            })
+            selectedFile = e.target.files[0];
+            console.log(e.target.files[0]);
+            console.log(selectedFile);
+        }
+    };
+
+    handleUpload = () => {
+        const uploadTask = storage.ref(`images/${this.state.selectedFile.name}`).put(this.state.selectedFile);
+        uploadTask.on(
+          "state_changed",
+          error => {
+            console.log(error);
+          },
+          () => {
+            storage
+              .ref("images")
+              .child(this.state.selectedFile.name)
+              .then(url => {
+                this.setState({url: url});
+              });
+          }
+        );
+      };
 
     render(){
         return (
             <div className="imageupload">
                 <input type="text" placeholder='Title' onChange={(e) => this.setState({title: e.target.value} )} />
                 <textarea placeholder='Description' rows="10" onChange={(e) => this.setState({description: e.target.value} )}/>
-                <input type="file" onChange={this.fileSelectHandler} />
+                <input type="file" onChange={(e) => this.handleChange(e)} />
                 <Button onClick={(e) => this.handleSubmit(e)}>
                     Upload
                 </Button>
-                <Button onClick={this.fileUploadHandler} >
+                <Button onClick={this.handleUpload} >
                     test euplod de la video
                 </Button>
+                <img src={this.state.selectedFile} />
             </div>
         )
     }
