@@ -3,6 +3,7 @@ import React from 'react'
 import './ImageUpload.css';
 import 'whatwg-fetch'
 import { storage } from "./firebase/firebase";
+import {BrowserRouter as Router, NavLink, Route} from "react-router-dom";
 
 const ImageUpload = () => {
     const [image, setImage] = useState(null);
@@ -90,16 +91,17 @@ const ImageUpload = () => {
                 console.error('There was an error!', error);
             });
 
+            <p>Vous pouvez maintenant voir votre publication sur la page d'accueil</p>
     }
   
     return (
         <div className="imageupload">
-                <input type="text" placeholder='Title' onChange={(event) => setTitle(event.target.value)} />
-                <input type="file" onChange={handleChange} />
-                <button onClick={handleUpload}>Charger l'image</button>
-                <img src={url}/>
-                <textarea placeholder='Description' rows="10" onChange={(event) => setDescription(event.target.value)}/>
-                <button onClick={fetchDatas}>Ajouter la publication</button>
+          <input className="imageupload__input" type="text" placeholder='Titre' onChange={(event) => setTitle(event.target.value)} />
+          <input className="imageupload__input" type="file" onChange={handleChange} />
+          <button className="imageupload__button" onClick={handleUpload}>Charger l'image</button>
+          <img src={url}/>
+          <textarea className="imageupload__input" placeholder="Votre recette" rows="10" onChange={(event) => setDescription(event.target.value)}/>
+          <button className="imageupload__button" onClick={fetchDatas} to="/">Ajouter la publication</button>
         </div>
     );
   };
