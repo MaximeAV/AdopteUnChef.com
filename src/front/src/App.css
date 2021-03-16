@@ -18,7 +18,25 @@
   background-color: white;
   object-fit: contain;
   padding: 20px;
-  border-bottom: 1px solid lightgray;
   color:green;
 	font-family: 'Courier New', Courier, monospace;
+}
+
+.app__button {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 10px;
+  border-radius: 50px;
+  border: 1px solid #d6d1d5;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  background-color: green;
+  color: white;
+  font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
 }

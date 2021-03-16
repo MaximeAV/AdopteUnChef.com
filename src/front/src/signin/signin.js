@@ -10,7 +10,6 @@ import imageSignin from '../images/imageSignin.jpg';
 class Signin extends React.Component {
     constructor(props){
         super();
-        console.log(this.props)
         this.handleSignin = this.handleSignin.bind(this)
 
         this.state = {
@@ -76,7 +75,14 @@ class Signin extends React.Component {
             .catch(error => {
                 console.error('There was an error!', error);
             });
+
+            console.log(this.state.username);
+
+            return(
+                <App username={this.state.username} />
+            )
     }
+    
 }
 
 export default Signin;

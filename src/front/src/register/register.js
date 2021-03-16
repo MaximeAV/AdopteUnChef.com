@@ -6,7 +6,6 @@ import 'whatwg-fetch'
 class Register extends React.Component {
     constructor(props){
         super();
-        console.log(this.props)
         this.handleSubmit = this.handleSubmit.bind(this)
 
         this.state = {
