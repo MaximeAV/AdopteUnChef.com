@@ -5,7 +5,6 @@ import '../register/register'
 import {BrowserRouter as Router, NavLink, Route} from "react-router-dom";
 import 'whatwg-fetch'
 import App from '../App';
-import imageSignin from '../images/imageSignin.jpg';
 
 class Signin extends React.Component {
     constructor(props){
@@ -20,8 +19,6 @@ class Signin extends React.Component {
 
     render(){
         return(
-            <div>
-                <img src={imageSignin} alt="pic" className="back-image" />
                 <form className="signin__form" >
                     <h1 className="titre">Se connecter</h1>
                     <label>
@@ -34,7 +31,6 @@ class Signin extends React.Component {
                     <label>Pas encore inscrit ?</label>
                     <NavLink className="navlink" to="/register" className="navlink">S'inscrire</NavLink>
                 </form>
-            </div>
         )
     }
 

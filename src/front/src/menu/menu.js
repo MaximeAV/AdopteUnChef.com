@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './menu.css';
-import Adopteunchef from '../images/adopteunchef.png';
+import Adopteunchef from '../adopteunchef.png';
 
 export default function Menu() {
 	return (
